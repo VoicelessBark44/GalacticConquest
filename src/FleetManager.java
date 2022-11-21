@@ -7,13 +7,11 @@ public class FleetManager {
 
 
         boolean main = true;
-        //Bug with quitting out of sub menu
-        //Main Menu is printed twice
         while (main) {
 
             printMainMenu();
 
-            String sel = sc.nextLine();
+            String sel = sc.next();
             if (sel.equalsIgnoreCase("a")) {
                 System.out.println("Enter Player Name: ");
                 String playerName = sc.next();
@@ -57,6 +55,7 @@ public class FleetManager {
                         oneFleet.fleetPrinted();
                     } else if (selection.equalsIgnoreCase("q")) {
                         System.out.println("In service of the God Emperor of Mankind");
+                        sc.nextLine();
                         work = false;
                     }
                 }
