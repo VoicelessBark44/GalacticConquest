@@ -1,22 +1,38 @@
 public class Ship {
 
-    public String shipType = "";
-    public String shipName = "";
-    public int armour = 0;
-    public int speed = 0;
-    public int hullHealth = 0;
-    public int weaponDamage = 0;
+
+    public int identifier;
+    private String shipType = "";
+    private double hullHealth = 0;
+    private int shieldHealth = 0;
+    private int armour = 0;
+    private double evadeChance = 0;
+    private double weaponDamage = 0;
+    private double repairSpeed = 0;
+    private boolean Screen = false;
+    private boolean Support = false;
+    private boolean Capital = false;
+
+    public Ship(String shipType, double hullHealth, int shieldHealth, int armour, double evadeChance, double weaponDamage, double repairSpeed) {
+        this.shipType = shipType;
+        this.hullHealth = hullHealth;
+        this.shieldHealth = shieldHealth;
+        this.armour = armour;
+        this.evadeChance = evadeChance;
+        this.weaponDamage = weaponDamage;
+        this.repairSpeed = repairSpeed;
+    }
 
     public Ship() {
 
     }
 
-    public String getShipName() {
-        return shipName;
+    public double getRepairSpeed() {
+        return repairSpeed;
     }
 
-    public void setShipName(String shipName) {
-        this.shipName = shipName;
+    public void setRepairSpeed(double repairSpeed) {
+        this.repairSpeed = repairSpeed;
     }
 
     public String getShipType() {
@@ -27,6 +43,22 @@ public class Ship {
         this.shipType = shipType;
     }
 
+    public double getHullHealth() {
+        return hullHealth;
+    }
+
+    public void setHullHealth(double hullHealth) {
+        this.hullHealth = hullHealth;
+    }
+
+    public int getShieldHealth() {
+        return shieldHealth;
+    }
+
+    public void setShieldHealth(int shieldHealth) {
+        this.shieldHealth = shieldHealth;
+    }
+
     public int getArmour() {
         return armour;
     }
@@ -35,49 +67,36 @@ public class Ship {
         this.armour = armour;
     }
 
-    public int getSpeed() {
-        return speed;
+    public double getEvadeChance() {
+        return evadeChance;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void setEvadeChance(double evadeChance) {
+        this.evadeChance = evadeChance;
     }
 
-    public int getHullHealth() {
-        return hullHealth;
-    }
-
-    public void setHullHealth(int hullHealth) {
-        this.hullHealth = hullHealth;
-    }
-
-    public int getWeaponDamage() {
+    public double getWeaponDamage() {
         return weaponDamage;
     }
 
-    public void setWeaponDamage(int weaponDamage) {
+    public void setWeaponDamage(double weaponDamage) {
         this.weaponDamage = weaponDamage;
     }
-}
 
-class ThisShip extends Ship {
-
-    public ThisShip() {
-
-        this.shipType = "none";
-        this.armour = 0;
-        this.speed = 0;
-        this.hullHealth = 0;
-        this.weaponDamage = 0;
-        this.shipName = "none";
+    public void lowerHealth(double damage) {
+        hullHealth =-damage;
     }
 
-    public void printShipStats() {
-        System.out.println("Ship Name: " + shipName +
-                "\nShip Type: " + shipType +
-                "\nShip Armour: " + armour +
-                "\nShip Speed: " + speed +
-                "\nShip Hull Health: " + hullHealth +
-                "\nShip Weapon Damage: " + weaponDamage);
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "shipType='" + shipType + '\'' +
+                ", hullHealth=" + hullHealth +
+                ", shieldHealth=" + shieldHealth +
+                ", armour=" + armour +
+                ", evadeChance=" + evadeChance +
+                ", weaponDamage=" + weaponDamage +
+                ", repairSpeed=" + repairSpeed +
+                '}';
     }
 }

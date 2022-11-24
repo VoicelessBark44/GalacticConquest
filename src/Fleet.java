@@ -3,31 +3,23 @@ import java.util.*;
 
 public class Fleet {
 
-    String playerName;
+    String fleetName;
 
     private ArrayList<Ship> fleet = new ArrayList<>();
-    private ArrayList<Ship> CapitalFleet = new ArrayList<>();
 
     public Fleet() {
-        playerName = "none";
+        fleetName = "none";
     }
 
-    public String getPlayerName(String playerName) {
-        return this.playerName;
+
+    public void addShip(Ship ship) {
+        fleet.add(ship);
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
-    public Fleet(String playerName) {
-        getPlayerName(playerName);
-    }
-
-    public void removeShip(String shipName) {
+    public void removeShip(int identifier) {
         boolean shipFinder = false;
         for (int i = 0; i < fleet.size(); i++) {
-            if (fleet.get(i).shipName.equalsIgnoreCase(shipName)) {
+            if (fleet.get(i).identifier == identifier) {
                 shipFinder = true;
                 System.out.println("Removed Ship");
                 fleet.remove(i);
@@ -38,11 +30,11 @@ public class Fleet {
         }
     }
 
-    public int getNumShipsInFleet() {
+    /*public int getNumShipsInFleet() {
         return fleet.size();
-    }
+    }*/
 
-    public void printShipStats(String shipName) {
+    /*public void printShipStats(String shipName) {
         boolean shipFinder = false;
         for (int i = 0; i < fleet.size(); i++) {
             if (fleet.get(i).shipName.equalsIgnoreCase(shipName)) {
@@ -58,9 +50,9 @@ public class Fleet {
         if (shipFinder = false) {
             System.out.println("Couldn't find that Ship");
         }
-    }
+    } */
 
-    public void fleetPrinted() {
+    /*public void fleetPrinted() {
         for (int i = 0; i < fleet.size(); i++) {
             System.out.println("Size of Fleet: " + fleet.size() +
                     "\nShip Name: " + fleet.get(i).shipName +
@@ -70,9 +62,6 @@ public class Fleet {
                     "\nShip Hull Health: " + fleet.get(i).hullHealth +
                     "\nShip Weapon Damage: " + fleet.get(i).weaponDamage);
         }
-    }
+    } */
 
-    public void addShip(Ship ship) {
-        fleet.add(ship);
-    }
 }
