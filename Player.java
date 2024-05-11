@@ -1,3 +1,5 @@
+import Ships.Ship;
+
 public class Player {
     private String name;
     private Fleet fleet;
