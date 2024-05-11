@@ -60,8 +60,10 @@ public class Game {
                 addShipToPlayerFleet(player);
                 break;
             case "2":
-                // Logic to attack opponent's fleet
-                System.out.println("You chose to attack the opponent's fleet.");
+                Player opponent = chooseOpponent(player);
+                if (opponent != null) {
+                    player.getFleet().attack(opponent.getFleet());
+                }
                 break;
             case "3":
                 displayPlayerFleet(player);
@@ -78,6 +80,31 @@ public class Game {
     
         // If the player didn't pass the turn, increment currentPlayerIndex
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
+
+    public Player chooseOpponent(Player currentPlayer) {
+        // Display available opponents
+        System.out.println("Choose an opponent to attack:");
+
+        int index = 1;
+        for (Player opponent : players) {
+            if (!opponent.equals(currentPlayer)) {
+                System.out.println(index + ". " + opponent.getName());
+                index++;
+            }
+        }
+
+        // Get user's choice for opponent
+        int choiceIndex = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        // Validate and return the selected opponent
+        if (choiceIndex >= 1 && choiceIndex <= players.size() - 1) {
+            return players.get(choiceIndex - 1); // Adjust index to match list index
+        } else {
+            System.out.println("Invalid opponent choice.");
+            return null;
+        }
     }
 
     private void addShipToPlayerFleet(Player player) {
